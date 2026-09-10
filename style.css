@@ -1,4 +1,253 @@
+/* MARIO COLOR PALETTE */
+
+:root {
+  --mario-red: #e52521;
+  --mario-red-dark: #b8201d;
+  --mario-blue: #049cd8;
+  --mario-blue-dark: #027cae;
+  --mario-yellow: #fbd000;
+  --mario-brown: #d67f43;
+  --mario-brown-dark: #a85a2a;
+  --mario-green: #43b047;
+  --mario-green-dark: #2e7d32;
+  --sky-blue: #5c94fc;
+  --brick-dark: #1a1a1a;
+  --cream: #fceabb;
+}
+
 body {
-  /* Zooms out the page to 90% (Adjust to 0.85 or 0.8 as needed) */
-  zoom: 90%; 
+  background-color: var(--sky-blue);
+  background-image:
+    linear-gradient(180deg, var(--sky-blue) 0%, var(--sky-blue) 70%, #7ec850 70%, #7ec850 100%);
+  background-attachment: fixed;
+  font-family: 'Press Start 2P', cursive;
+  color: var(--brick-dark);
+}
+
+/* BANNER - topleft */
+
+.site-banner {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+}
+
+.banner-img {
+  width: 150px;
+  max-height: 150px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  border: 4px solid var(--brick-dark);
+  border-radius: 8px;
+  background: var(--cream);
+}
+
+
+/* TEXT ELEMENTS                 */
+
+.pixel-red,
+.hero-subtitle {
+  color: var(--mario-red);
+  text-shadow: 2px 2px 0 var(--brick-dark);
+}
+
+.main-title {
+  color: var(--mario-yellow);
+  -webkit-text-stroke: 2px var(--brick-dark);
+  text-shadow: 4px 4px 0 var(--mario-red);
+  font-size: 3rem;
+}
+
+.hero-description {
+  color: #fff;
+  text-shadow: 2px 2px 0 var(--mario-blue-dark);
+}
+
+.section-title {
+  color: var(--mario-red);
+  background: var(--cream);
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border: 3px solid var(--brick-dark);
+  border-radius: 6px;
+}
+
+.content-text {
+  color: var(--brick-dark);
+  line-height: 1.8;
+}
+
+.small-pixel {
+  color: var(--mario-blue-dark);
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.footer-text {
+  color: #fff;
+  text-shadow: 2px 2px 0 var(--brick-dark);
+}
+
+/* CONTAINERS */
+
+.nes-container {
+  background-color: var(--cream) !important;
+  border-color: var(--brick-dark) !important;
+}
+
+.glow-red {
+  box-shadow: 0 0 20px var(--mario-red);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  filter: drop-shadow(2px 2px 0 var(--brick-dark));
+}
+
+.feature-title {
+  color: var(--mario-blue-dark);
+}
+
+.hero-gadget {
+  font-size: 2.5rem;
+}
+
+
+/* NAV TABS  */
+
+.nav-tabs {
+  border-bottom: 4px solid var(--mario-green-dark);
+}
+
+.nav-tabs .nav-link {
+  color: var(--mario-blue-dark);
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.7rem;
+  border: none;
+  padding: 0.75rem 1rem;
+}
+
+.nav-tabs .nav-link:hover {
+  color: var(--mario-red);
+}
+
+.nav-tabs .nav-link.active {
+  background-color: var(--mario-green);
+  color: #fff !important;
+  border-radius: 6px 6px 0 0;
+  border: 3px solid var(--brick-dark);
+  border-bottom: none;
+}
+
+
+/* BUTTONS */
+
+.nes-btn.is-error {
+  background-color: var(--mario-red) !important;
+  border-color: var(--brick-dark) !important;
+  color: #fff !important;
+}
+
+.nes-btn.is-error:hover {
+  background-color: var(--mario-red-dark) !important;
+}
+
+.nes-btn:not(.is-error) {
+  background-color: var(--mario-yellow) !important;
+  border-color: var(--brick-dark) !important;
+  color: var(--brick-dark) !important;
+}
+
+.nes-btn:not(.is-error):hover {
+  background-color: #e0b800 !important;
+}
+
+.card.nes-rounded {
+  background-color: var(--cream);
+  border: 4px solid var(--brick-dark);
+  border-radius: 8px;
+  image-rendering: pixelated;
+}
+
+/* FEATURE CARDS - "Power-Up"    */
+.card.nes-rounded {
+  background-color: var(--cream);
+  border: 4px solid var(--brick-dark);
+  border-radius: 8px;
+  image-rendering: pixelated;
+  box-shadow: 6px 6px 0 var(--brick-dark);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.card.nes-rounded::before {
+  content: "";
+  display: block;
+  height: 10px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--mario-yellow) 0 10px,
+    var(--mario-brown) 10px 20px
+  );
+}
+
+.card.nes-rounded:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 10px 10px 0 var(--brick-dark);
+}
+
+.card.nes-rounded .card-body {
+  padding: 1.75rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* coint inside */
+.card.nes-rounded .feature-icon {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--mario-yellow);
+  border: 3px solid var(--brick-dark);
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  box-shadow: 3px 3px 0 var(--brick-dark);
+}
+
+.card.nes-rounded .card-title {
+  color: var(--mario-blue-dark);
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.card.nes-rounded .card-text {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 0.85rem;
+  color: var(--brick-dark);
+  text-align: center;
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+}
+
+.card.nes-rounded .nes-btn {
+  margin-top: auto;
+  width: 100%;
+}
+
+.col-md-4:nth-child(1) .card.nes-rounded::before {
+  background: repeating-linear-gradient(90deg, var(--mario-red) 0 10px, var(--mario-red-dark) 10px 20px);
+}
+
+.col-md-4:nth-child(2) .card.nes-rounded::before {
+  background: repeating-linear-gradient(90deg, var(--mario-green) 0 10px, var(--mario-green-dark) 10px 20px);
+}
+
+.col-md-4:nth-child(3) .card.nes-rounded::before {
+  background: repeating-linear-gradient(90deg, var(--mario-blue) 0 10px, var(--mario-blue-dark) 10px 20px);
 }
