@@ -1,70 +1,556 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Careers & Fields - CPE Website</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- NES.css -->
-    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
-    <!-- Google Fonts: Press Start 2P -->
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Press Start 2P', monospace;
-            background-color: 121212;
-            color: #ffffff;
-        }
-        .header-img {
-            width: 100%;
-            max-height: 250px;
-            object-fit: cover;
-            border-bottom: 4px solid #dc3545;
-        }
-        .nav-btn {
-            font-size: 0.75 rem;
-            padding: 8px 12px;
-            color: #ffffff;
-            border: 2px solid #dc3545;
-            background-color: #1a1a1a;
-            margin: 2px;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .nav-btn.active, .nav-btn:hover {
-            background-color: #dc3545;
-            color: #ffffff;
-        }
-        .nes-container.is.dark {
-            background-color: #1a1a1a;
-            border-color: #dc3545;
-            color: #ffffff;
-        }
-        .title-text {
-            color: #dc3545;
-            font-size: 1.2rem;
-            line-height: 1.6;
-        }
-        .footer-text {
-            font-size: 0.7rem;
-            color: #aaaaaa;
-        }
 
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Careers & Fields - CPE World</title>
+
+  <!-- External Stylesheets -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <style>
+    /* Global Styles */
+    body {
+      font-family: 'Press Start 2P', cursive;
+      background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), 
+                  url('DESERT BG.jpg') no-repeat center center fixed;
+      background-size: 100% 100%;
+      color: #212529;
+      margin: 0;
+      padding: 0 0 40px 0;
+      image-rendering: pixelated;
+    }
+
+    /* Navigation */
+    .nav-tabs {
+      border-bottom: 4px solid #1a252f;
+      gap: 8px;
+    }
+
+    .nav-tabs .nav-link {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.65rem;
+      color: #2c3e50 !important;
+      background-color: #f7dc6f !important;
+      border: 3px solid #1a252f !important;
+      border-radius: 0 !important;
+      padding: 10px 14px;
+      box-shadow: 2px 2px 0px #000;
+    }
+
+    .nav-tabs .nav-link.active {
+      color: #ffffff !important;
+      background-color: #d35400 !important;
+      border-color: #1a252f !important;
+    }
+
+    .nav-tabs .nav-link:hover:not(.active) {
+      background-color: #f4d03f !important;
+    }
+
+    /* Hero Section */
+    .hero-gadget {
+      font-size: 3rem;
+      margin-bottom: 12px;
+    }
+
+    .main-title {
+      font-size: 1.8rem;
+      line-height: 1.4;
+      color: #f1c40f;
+      text-shadow: 
+        -3px -3px 0 #000,  3px -3px 0 #000, -3px 3px 0 #000,  3px 3px 0 #000,
+        -3px  0px 0 #000,  3px  0px 0 #000,  0px -3px 0 #000, 0px 3px 0 #000,
+         4px  4px 0 #d35400, 5px 5px 0 #000;
+      margin-bottom: 15px;
+    }
+
+    .hero-subtitle {
+      font-size: 0.85rem;
+      color: #f39c12 !important;
+      text-shadow: 2px 2px 0px #000000;
+      margin-bottom: 12px;
+    }
+
+    .hero-description {
+      font-size: 0.7rem;
+      color: #ffffff;
+      text-shadow: 2px 2px 0px #000000;
+      line-height: 1.8;
+    }
+
+    /* Desert Containers & Cards */
+    .biome-desert-container {
+      background-color: rgba(252, 243, 207, 0.92) !important;
+      border: 4px solid #b9770e !important;
+      border-radius: 12px !important;
+      box-shadow: 5px 5px 0px #000;
+      color: #212529;
+      padding: 24px;
+    }
+
+    .biome-desert-container .card.nes-rounded {
+      background-color: #f9e79f;
+      border: 3px solid #d68910;
+      border-radius: 10px;
+      box-shadow: 3px 3px 0px #000;
+    }
+
+    /* Pyramid Container */
+    .biome-pyramid-container {
+      background-color: rgba(184, 115, 51, 0.92) !important;
+      border: 4px solid #5c3008 !important;
+      border-radius: 12px !important;
+      box-shadow: 5px 5px 0px #000;
+      color: #ffffff !important;
+      padding: 24px;
+    }
+
+    .biome-pyramid-container .nes-container.is-rounded {
+      background-color: #d29034 !important;
+      border: 3px solid #5c3008 !important;
+      box-shadow: 3px 3px 0px #000;
+    }
+
+    .biome-pyramid-container .content-text,
+    .biome-pyramid-container .pixel-tools {
+      color: #1a0f02 !important;
+    }
+
+    /* Typography */
+    .pixel-amber {
+      color: #b9770e !important;
+      text-shadow: 1px 1px 0px #000;
+    }
+
+    .pixel-gold {
+      color: #fff3a8 !important;
+      text-shadow: 2px 2px 0px #000;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .feature-title {
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    .content-text {
+      font-size: 0.7rem;
+      line-height: 1.8;
+      color: #000000;
+    }
+
+    .pixel-tools {
+      font-size: 0.65rem;
+      line-height: 1.8;
+      letter-spacing: 0.5px;
+      word-spacing: 2px;
+      color: #000000;
+    }
+
+    .small-pixel {
+      font-size: 0.6rem;
+      line-height: 1.6;
+    }
+
+    /* Footer Text */
+    .footer-text {
+      font-size: 0.7rem;
+      color: #ffffff;
+      text-shadow: 2px 2px 0px #000;
+    }
+
+    /* Modals */
+    .modal-content.nes-container {
+      background-color: #2c3e50 !important;
+      border: 4px solid #f39c12 !important;
+      border-radius: 12px !important;
+    }
+
+    .modal-header .btn-close {
+      filter: invert(1);
+    }
+
+    /* Skill Button Animation */
+    .skill-item {
+      position: relative;
+    }
+
+    .level-badge {
+      font-size: 0.65rem;
+      color: #f1c40f;
+      text-shadow: 1px 1px 0px #000;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .pop-text {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.95rem;
+      color: #f1c40f;
+      text-shadow: 2px 2px 0px #d35400, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000, 1px 1px 0px #000;
+      pointer-events: none;
+      animation: marioPop 0.8s ease-out forwards;
+      z-index: 10;
+    }
+
+    @keyframes marioPop {
+      0% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+      50% {
+        opacity: 1;
+        transform: translate(-50%, -35px);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -55px);
+      }
+    }
+  </style>
+
 </head>
+
 <body>
-    <!--header-->
-    <div class="text-center">
-        <img src="CPE LOGO.jpg" alt="CPE Banner" class="header-img">
+
+<div class="container py-4">
+
+  <!-- Navigation -->
+  <ul class="nav nav-tabs mb-4 justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link" href="index.html">HOME</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="about.html">ABOUT</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="careers.html">CAREER & FIELDS</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="faculty.html">FACULTY</a>
+    </li>
+  </ul>
+
+  <!-- Hero Section -->
+  <section class="text-center mb-5">
+
+    <div class="hero-gadget">
+      🏜️
     </div>
 
-    <!--nav bar-->
-    <div class="container text-center my-4">
-        <a href="index.html" class="nav-btn">HOME</a>
-        <a href="about.html" class="nav-btn">ABOUT</a>
-        <a href="careers.html" class="nav-btn active">CAREER & FIELDS</a>
-        <a href="faculty.html" class="nav-btn">FACULTY</a>
+    <p class="hero-subtitle">
+      ★ WORLD 2: DESERT LAND ★
+    </p>
+
+    <h1 class="main-title">
+      CAREERS & FIELDS
+    </h1>
+
+    <p class="hero-description">
+      EXPLORE THE PATHS OF COMPUTER ENGINEERING
+    </p>
+
+  </section>
+
+  <!-- Specializations -->
+  <section class="biome-desert-container mb-5">
+
+    <h2 class="section-title pixel-amber">
+      🌵 SPECIALIZATION OASIS
+    </h2>
+
+    <p class="content-text mb-4">
+      Computer Engineering bridges physical hardware and software logic. Click on any specialization card to view class stats, key tools, and real-world projects.
+    </p>
+
+    <div class="row g-4">
+
+      <!-- Embedded & IoT -->
+      <div class="col-md-4">
+        <div class="card h-100 nes-rounded text-center p-3">
+          <div class="card-body d-flex flex-column justify-content-between p-0">
+            <div>
+              <div class="feature-icon mb-2" style="font-size: 2rem;">🌐</div>
+              <h3 class="card-title feature-title pixel-amber mb-2">EMBEDDED & IOT</h3>
+              <p class="content-text mt-2">
+                Connect microcontrollers, sensors, and cloud data to build smart physical systems.
+              </p>
+            </div>
+            <button type="button" class="nes-btn is-warning mt-3" data-bs-toggle="modal" data-bs-target="#iotModal">
+              VIEW STATS →
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cybersecurity -->
+      <div class="col-md-4">
+        <div class="card h-100 nes-rounded text-center p-3">
+          <div class="card-body d-flex flex-column justify-content-between p-0">
+            <div>
+              <div class="feature-icon mb-2" style="font-size: 2rem;">🛡️</div>
+              <h3 class="card-title feature-title pixel-amber mb-2">CYBERSECURITY</h3>
+              <p class="content-text mt-2">
+                Build secure network defenses, audit embedded systems, and shield hardware infrastructure.
+              </p>
+            </div>
+            <button type="button" class="nes-btn is-warning mt-3" data-bs-toggle="modal" data-bs-target="#cyberModal">
+              VIEW STATS →
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI & Robotics -->
+      <div class="col-md-4">
+        <div class="card h-100 nes-rounded text-center p-3">
+          <div class="card-body d-flex flex-column justify-content-between p-0">
+            <div>
+              <div class="feature-icon mb-2" style="font-size: 2rem;">🧠</div>
+              <h3 class="card-title feature-title pixel-amber mb-2">AI & ROBOTICS</h3>
+              <p class="content-text mt-2">
+                Train machine learning models and intelligent automation for autonomous physical hardware.
+              </p>
+            </div>
+            <button type="button" class="nes-btn is-warning mt-3" data-bs-toggle="modal" data-bs-target="#aiModal">
+              VIEW STATS →
+            </button>
+          </div>
+        </div>
+      </div>
 
     </div>
+
+  </section>
+
+  <!-- High-Demand Roles -->
+  <section class="biome-pyramid-container mb-5">
+
+    <h2 class="section-title pixel-gold mb-4">
+      🏺 PYRAMID VAULT: HIGH-DEMAND ROLES
+    </h2>
+
+    <!-- IoT Architect -->
+    <div class="nes-container is-rounded mb-4">
+      <h3 class="pixel-gold feature-title mb-2">🌐 IOT SOLUTIONS ARCHITECT</h3>
+      <p class="content-text mb-3">
+        Builds end-to-end smart devices—connecting microcontrollers (ESP32/Arduino), physical sensors, and cloud platforms for real-time data tracking.
+      </p>
+      <p class="content-text pixel-tools mb-0">
+        <strong>PRIMARY TOOLS:</strong> C++, MQTT, Node-RED, AWS IoT, ESP32
+      </p>
+    </div>
+
+    <!-- Embedded Engineer -->
+    <div class="nes-container is-rounded mb-4">
+      <h3 class="pixel-gold feature-title mb-2">⚡ EMBEDDED SYSTEMS ENGINEER</h3>
+      <p class="content-text mb-3">
+        Writes low-level C/C++ firmware, programs microprocessors, designs PCB circuit boards, and verifies hardware timing logic.
+      </p>
+      <p class="content-text pixel-tools mb-0">
+        <strong>PRIMARY TOOLS:</strong> Assembly, C / C++, STM32, Proteus, RTOS
+      </p>
+    </div>
+
+    <!-- Security Analyst -->
+    <div class="nes-container is-rounded mb-4">
+      <h3 class="pixel-gold feature-title mb-2">🔒 CYBERSECURITY ANALYST</h3>
+      <p class="content-text mb-3">
+        Protects corporate network infrastructure, audits hardware vulnerabilities, configures firewalls, and secures connected IoT devices.
+      </p>
+      <p class="content-text pixel-tools mb-0">
+        <strong>PRIMARY TOOLS:</strong> Wireshark, Linux, Python, Snort, Network Firewalls
+      </p>
+    </div>
+
+    <!-- Network Engineer -->
+    <div class="nes-container is-rounded">
+      <h3 class="pixel-gold feature-title mb-2">📡 NETWORK & SYSTEMS ENGINEER</h3>
+      <p class="content-text mb-3">
+         Configures enterprise routing protocols, manages switches, designs network topologies, and maintains high-speed data communications.
+      </p>
+      <p class="content-text pixel-tools mb-0">
+        <strong>PRIMARY TOOLS:</strong> Cisco Packet Tracer, IPv4 / IPv6, Static Routing, VLANs
+      </p>
+    </div>
+
+  </section>
+
+  <!-- Core Skills -->
+  <section class="biome-desert-container mb-5 text-center">
+
+    <h2 class="section-title pixel-amber mb-3">
+      ⭐ CORE INDUSTRY SKILLS
+    </h2>
+
+    <p class="content-text text-center mb-4 mt-2">
+      Essential skill sets required across computer engineering fields (Click to Level Up!):
+    </p>
+
+    <div class="row text-center justify-content-center mt-4">
+
+      <!-- Skill 1 -->
+      <div class="col-6 col-md-3 mb-4 d-flex flex-column align-items-center skill-item">
+        <div class="feature-icon mb-2" style="font-size: 2rem;">📡</div>
+        <p class="small-pixel mb-1 text-dark">IOT / SENSORS</p>
+        <span class="level-badge" id="lvl-badge-1">LVL 0</span>
+        <button type="button" class="nes-btn is-warning p-1 fs-6 px-3" onclick="triggerPop(this, 'lvl-badge-1')">
+          STAT +
+        </button>
+      </div>
+
+      <!-- Skill 2 -->
+      <div class="col-6 col-md-3 mb-4 d-flex flex-column align-items-center skill-item">
+        <div class="feature-icon mb-2" style="font-size: 2rem;">💻</div>
+        <p class="small-pixel mb-1 text-dark">ASSEMBLY / C++</p>
+        <span class="level-badge" id="lvl-badge-2">LVL 0</span>
+        <button type="button" class="nes-btn is-warning p-1 fs-6 px-3" onclick="triggerPop(this, 'lvl-badge-2')">
+          STAT +
+        </button>
+      </div>
+
+      <!-- Skill 3 -->
+      <div class="col-6 col-md-3 mb-4 d-flex flex-column align-items-center skill-item">
+        <div class="feature-icon mb-2" style="font-size: 2rem;">🔒</div>
+        <p class="small-pixel mb-1 text-dark">SECURITY</p>
+        <span class="level-badge" id="lvl-badge-3">LVL 0</span>
+        <button type="button" class="nes-btn is-warning p-1 fs-6 px-3" onclick="triggerPop(this, 'lvl-badge-3')">
+          STAT +
+        </button>
+      </div>
+
+      <!-- Skill 4 -->
+      <div class="col-6 col-md-3 mb-4 d-flex flex-column align-items-center skill-item">
+        <div class="feature-icon mb-2" style="font-size: 2rem;">🤖</div>
+        <p class="small-pixel mb-1 text-dark">ROBOTICS</p>
+        <span class="level-badge" id="lvl-badge-4">LVL 0</span>
+        <button type="button" class="nes-btn is-warning p-1 fs-6 px-3" onclick="triggerPop(this, 'lvl-badge-4')">
+          STAT +
+        </button>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Next Level Link -->
+  <section class="text-center mt-5 mb-4">
+
+    <p class="pixel-gold mb-3" style="font-size: 0.9rem; text-shadow: 2px 2px #000;">
+      READY FOR THE NEXT LEVEL?
+    </p>
+
+    <a href="faculty.html" class="nes-btn is-primary">
+      MEET THE FACULTY →
+    </a>
+
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center mt-5">
+
+    <p class="footer-text mb-0">
+      INSERT COIN TO CONTINUE YOUR CPE QUEST.
+    </p>
+
+  </footer>
+
+</div>
+
+<!-- Modals -->
+<div class="modal fade" id="iotModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content nes-container is-rounded bg-dark text-white border-warning">
+      <div class="modal-header border-bottom border-warning">
+        <h5 class="modal-title text-warning">🌐 EMBEDDED & IOT CLASS</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="content-text text-white"><strong>Overview:</strong> Focuses on connecting microcontrollers and sensors to cloud networks for automated tracking and control.</p>
+        <p class="content-text text-white"><strong>Core Subjects:</strong> Microprocessor Systems, Sensor Networks, Embedded Firmware.</p>
+        <p class="content-text text-white mb-0"><strong>Example Project:</strong> Smart Water Potability & Flood Monitoring System using ESP32.</p>
+      </div>
+      <div class="modal-footer border-top border-warning">
+        <button type="button" class="nes-btn is-warning" data-bs-dismiss="modal">CLOSE</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="cyberModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content nes-container is-rounded bg-dark text-white border-warning">
+      <div class="modal-header border-bottom border-warning">
+        <h5 class="modal-title text-warning">🛡️ CYBERSECURITY CLASS</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="content-text text-white"><strong>Overview:</strong> Focuses on securing hardware devices, network protocols, and enterprise data infrastructure against external threats.</p>
+        <p class="content-text text-white"><strong>Core Subjects:</strong> Network Security, Cryptography, Hardware Security Auditing.</p>
+        <p class="content-text text-white mb-0"><strong>Example Project:</strong> Secure IoT Gateway with Encrypted Packet Transmission.</p>
+      </div>
+      <div class="modal-footer border-top border-warning">
+        <button type="button" class="nes-btn is-warning" data-bs-dismiss="modal">CLOSE</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="aiModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content nes-container is-rounded bg-dark text-white border-warning">
+      <div class="modal-header border-bottom border-warning">
+        <h5 class="modal-title text-warning">🧠 AI & ROBOTICS CLASS</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="content-text text-white"><strong>Overview:</strong> Combines machine learning models with physical actuators to create autonomous robotic systems.</p>
+        <p class="content-text text-white"><strong>Core Subjects:</strong> Artificial Intelligence, Computer Vision, Feedback Control Systems.</p>
+        <p class="content-text text-white mb-0"><strong>Example Project:</strong> Autonomous Line-Following & Obstacle-Avoiding Rover.</p>
+      </div>
+      <div class="modal-footer border-top border-warning">
+        <button type="button" class="nes-btn is-warning" data-bs-dismiss="modal">CLOSE</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  function triggerPop(buttonElement, badgeId) {
+    const badge = document.getElementById(badgeId);
+    let currentLvl = parseInt(badge.innerText.replace('LVL ', '')) || 0;
+    currentLvl += 1;
+    badge.innerText = 'LVL ' + currentLvl;
+
+    const pop = document.createElement('div');
+    pop.className = 'pop-text';
+    pop.innerText = '+1';
+
+    const parentContainer = buttonElement.parentElement;
+    parentContainer.appendChild(pop);
+
+    setTimeout(() => {
+      pop.remove();
+    }, 800);
+  }
+</script>
+
 </body>
+</html>
