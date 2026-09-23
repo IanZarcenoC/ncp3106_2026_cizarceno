@@ -27,30 +27,29 @@
     }
 
     /* Navigation */
-    .nav-tabs {
-      border-bottom: 4px solid #1a252f;
-      gap: 8px;
-    }
-
-    .nav-tabs .nav-link {
+    /* Retro Navigation Links Styling */
+    .custom-tab {
       font-family: 'Press Start 2P', cursive;
-      font-size: 0.65rem;
+      font-size: 0.6rem !important;
       color: #2c3e50 !important;
       background-color: #f7dc6f !important;
       border: 3px solid #1a252f !important;
       border-radius: 0 !important;
-      padding: 10px 14px;
+      padding: 8px 12px !important;
       box-shadow: 2px 2px 0px #000;
+      text-align: center;
+      display: block;
     }
 
-    .nav-tabs .nav-link.active {
+    .custom-tab.active {
       color: #ffffff !important;
-      background-color: #d35400 !important;
-      border-color: #1a252f !important;
+      background-color: #c0392b !important;
+      border-color: #f39c12 !important;
     }
 
-    .nav-tabs .nav-link:hover:not(.active) {
+    .custom-tab:hover:not(.active) {
       background-color: #f4d03f !important;
+      color: #000 !important;
     }
 
     /* Hero Section */
@@ -228,22 +227,39 @@
 <body>
 
 <div class="container py-4">
+ <!-- NAVIGATION -->
+<!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-md biome-castle-container p-3 mb-4" style="border: 3px solid #f39c12 !important;">
+    <div class="container-fluid">
+      <a class="navbar-brand pixel-gold text-decoration-none" href="index.html" style="font-size: 0.75rem;">
+        🎮 CPE WORLD
+      </a>
+      
+      <!-- Retro Mobile Menu Toggle Button -->
+      <button class="nes-btn is-warning py-1 px-2" type="button" data-bs-toggle="collapse" data-bs-target="#retroNavbar" aria-controls="retroNavbar" aria-expanded="false" aria-label="Toggle navigation" style="font-size: 0.5rem;">
+        ☰ MENU
+      </button>
 
-  <!-- Navigation -->
-  <ul class="nav nav-tabs mb-4 justify-content-center">
-    <li class="nav-item">
-      <a class="nav-link" href="index.html">HOME</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="about.html">ABOUT</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="careers.html">CAREER & FIELDS</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="faculty.html">FACULTY</a>
-    </li>
-  </ul>
+      <!-- Collapsible Nav Links -->
+      <div class="collapse navbar-collapse justify-content-end mt-3 mt-md-0" id="retroNavbar">
+        <ul class="navbar-nav gap-2 align-items-md-center">
+          <li class="nav-item">
+            <a class="nav-link custom-tab" href="index.html">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link custom-tab" href="about.html">ABOUT</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link custom-tab" href="careers.html">CAREER & FIELDS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link custom-tab active" aria-current="page" href="faculty.html">FACULTY</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
 
   <!-- Hero Section -->
   <section class="text-center mb-5">
