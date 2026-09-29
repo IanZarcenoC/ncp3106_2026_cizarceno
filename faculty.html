@@ -13,6 +13,9 @@
   <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
+  <!-- Light Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     /* Global Styles */
     body {
@@ -27,7 +30,6 @@
       image-rendering: pixelated;
     }
 
-    /* Navigation */
     /* Retro Navigation Links Styling */
     .custom-tab {
       font-family: 'Press Start 2P', cursive;
@@ -148,10 +150,19 @@
       line-height: 1.5;
     }
 
+    /* Body text in Comic Neue */
     .content-text {
-      font-size: 0.65rem;
+      font-family: 'Comic Neue', 'Comic Sans MS', cursive !important;
+      font-size: 1.25rem;
       line-height: 1.7;
+      letter-spacing: 0.3px;
       color: #ecf0f1;
+    }
+
+    /* Smaller text inside faculty cards and the popup */
+    .faculty-card .content-text,
+    #modalProfText {
+      font-size: 1.1rem !important;
     }
 
     /* Footer Text */
@@ -202,7 +213,6 @@
 <div class="container py-4">
 
   <!-- Navigation -->
- <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-md biome-castle-container p-3 mb-4" style="border: 3px solid #f39c12 !important;">
     <div class="container-fluid">
       <a class="navbar-brand pixel-gold text-decoration-none" href="index.html" style="font-size: 0.75rem;">
@@ -415,7 +425,7 @@
           </div>
           
           <h5 id="modalProfName" class="pixel-lava mb-3" style="font-size: 0.75rem;"></h5>
-          <p id="modalProfText" class="content-text mb-4" style="font-size: 0.65rem;"></p>
+          <p id="modalProfText" class="content-text mb-4"></p>
 
           <div class="mt-auto pt-2 border-top border-warning text-end">
             <button type="button" class="nes-btn is-warning" data-bs-dismiss="modal" style="font-size: 0.5rem; padding: 6px 10px;">CLOSE</button>

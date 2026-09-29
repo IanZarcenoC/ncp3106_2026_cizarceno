@@ -8,6 +8,11 @@
 
   <title>CPE World - Computer Engineering</title>
 
+  <!-- Skip the intro if it was already played in this tab -->
+  <script>
+    try { if (sessionStorage.getItem('cpe_intro_done') === 'true') document.documentElement.classList.add('intro-done'); } catch (e) {}
+  </script>
+
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -17,26 +22,84 @@
   <!-- Pixel Font -->
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
+  <!-- Light Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+
   <!-- Custom CSS -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- Mini-game intro styles -->
+  <style>
+    .intro-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    .intro-overlay.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .intro-done .intro-overlay { display: none; }
+    body.intro-active { overflow: hidden; }
+
+    #game {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 4px solid #f39c12;
+      image-rendering: pixelated;
+      background: #5c94fc;
+      touch-action: manipulation;
+      cursor: pointer;
+    }
+    .game-bar { height: 12px; background: #222; border: 2px solid #f39c12; margin: 10px 0; }
+    .game-bar > div { height: 100%; width: 0; background: #e52521; }
+  </style>
 
 </head>
 
 
 <body>
 
+<!-- ========================= -->
+<!-- MARIO RUNNER MINI-GAME INTRO -->
+<!-- ========================= -->
+<div id="intro-overlay" class="intro-overlay">
+  <div class="text-center nes-container is-rounded is-dark p-3" style="width: 94%; max-width: 680px;">
+
+    <h2 class="pixel-gold mb-2" style="font-size: 0.75rem;">🎮 WORLD 1-1: SURVIVE!</h2>
+    <p class="mb-2" style="font-size: 0.5rem; color: #f39c12;">PRESS SPACEBAR OR TAP TO JUMP OVER THE OBSTACLES</p>
+
+    <canvas id="game" width="640" height="200"></canvas>
+
+    <div class="game-bar"><div id="game-progress"></div></div>
+
+    <div class="d-flex justify-content-between mb-3" style="font-size: 0.55rem;">
+      <span id="game-time" class="pixel-gold">TIME 0.0 / 5.0</span>
+      <span id="game-status" class="pixel-red">PRESS SPACE TO START</span>
+    </div>
+
+    <button id="skipBtn" class="nes-btn is-warning w-100" style="font-size: 0.6rem;">
+      SKIP INTRO →
+    </button>
+
+  </div>
+</div>
+
+
 <div class="container py-4">
 
 <!-- ========================= -->
 <!-- NAVIGATION -->
 <!-- ========================= -->
-<!-- Navigation Bar -->
   <nav class="navbar navbar-expand-md biome-castle-container p-3 mb-4" style="border: 3px solid #f39c12 !important;">
     <div class="container-fluid">
       <a class="navbar-brand pixel-gold text-decoration-none" href="index.html" style="font-size: 0.75rem;">
         🎮 CPE WORLD
       </a>
-      
+
       <!-- Retro Mobile Menu Toggle Button -->
       <button class="nes-btn is-warning py-1 px-2" type="button" data-bs-toggle="collapse" data-bs-target="#retroNavbar" aria-controls="retroNavbar" aria-expanded="false" aria-label="Toggle navigation" style="font-size: 0.5rem;">
         ☰ MENU
@@ -46,7 +109,7 @@
       <div class="collapse navbar-collapse justify-content-end mt-3 mt-md-0" id="retroNavbar">
         <ul class="navbar-nav gap-2 align-items-md-center">
           <li class="nav-item">
-            <a class="nav-link custom-tab" href="index.html">HOME</a>
+            <a class="nav-link custom-tab active" aria-current="page" href="index.html">HOME</a>
           </li>
           <li class="nav-item">
             <a class="nav-link custom-tab" href="about.html">ABOUT</a>
@@ -55,7 +118,7 @@
             <a class="nav-link custom-tab" href="careers.html">CAREER & FIELDS</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link custom-tab active" aria-current="page" href="faculty.html">FACULTY</a>
+            <a class="nav-link custom-tab" href="faculty.html">FACULTY</a>
           </li>
         </ul>
       </div>
@@ -97,7 +160,7 @@
       🍄 WELCOME, WARRIOR!
     </h2>
 
-    <p class="content-text">
+    <p class="content-text intro-text">
 
       Welcome to CPE World, an interactive guide to
       Computer Engineering. Explore the world of hardware,
@@ -106,7 +169,7 @@
 
     </p>
 
-    <p class="content-text">
+    <p class="content-text intro-text">
 
       Computer Engineering combines engineering principles
       with computing technologies to create systems that
@@ -139,7 +202,7 @@
       🏫 UNIVERSITY OF THE EAST
     </h2>
 
-    <p class="content-text">
+    <p class="content-text intro-text">
 
       The Bachelor of Science in Computer Engineering
       at the University of the East develops knowledge
@@ -241,7 +304,7 @@
         </div>
 
         <div class="mt-3">
-          <a href="specializations.html"
+          <a href="about.html"
              class="nes-btn is-error w-100" style="font-size: 0.6rem;">
 
             EXPLORE
@@ -307,54 +370,23 @@
     <div class="row text-center mt-4">
 
       <div class="col-md-3 mb-4">
-
-        <div class="feature-icon">
-          💻
-        </div>
-
-        <p class="small-pixel">
-          HARDWARE
-        </p>
-
+        <div class="feature-icon">💻</div>
+        <p class="small-pixel">HARDWARE</p>
       </div>
 
-
       <div class="col-md-3 mb-4">
-
-        <div class="feature-icon">
-          💾
-        </div>
-
-        <p class="small-pixel">
-          SOFTWARE
-        </p>
-
+        <div class="feature-icon">💾</div>
+        <p class="small-pixel">SOFTWARE</p>
       </div>
 
-
       <div class="col-md-3 mb-4">
-
-        <div class="feature-icon">
-          🤖
-        </div>
-
-        <p class="small-pixel">
-          ROBOTICS
-        </p>
-
+        <div class="feature-icon">🤖</div>
+        <p class="small-pixel">ROBOTICS</p>
       </div>
 
-
       <div class="col-md-3 mb-4">
-
-        <div class="feature-icon">
-          🧠
-        </div>
-
-        <p class="small-pixel">
-          AI
-        </p>
-
+        <div class="feature-icon">🧠</div>
+        <p class="small-pixel">AI</p>
       </div>
 
     </div>
@@ -405,6 +437,11 @@
   <source src="bgm home.mp3" type="audio/mp3">
 </audio>
 
+<!-- GLOBAL CLICK SOUND EFFECT -->
+<audio id="clickSound" preload="auto">
+  <source src="btn effect.mp3" type="audio/mp3">
+</audio>
+
 <!-- RETRO MUSIC CONTROL BUTTON -->
 <div style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
   <button id="musicToggleBtn" onclick="toggleMusic()" class="nes-btn is-warning" style="font-size: 0.5rem; padding: 8px 12px;">
@@ -412,19 +449,21 @@
   </button>
 </div>
 
+
+<!-- ========================= -->
+<!-- MUSIC + CLICK SOUND -->
+<!-- ========================= -->
 <script>
   const audio = document.getElementById('bgMusic');
   const btn = document.getElementById('musicToggleBtn');
 
-  // Check if music was playing on the previous page using localStorage
+  // Resume music if it was playing on the previous page
   window.addEventListener('DOMContentLoaded', () => {
-    const musicState = localStorage.getItem('cpe_music_playing');
-    
-    if (musicState === 'true') {
+    if (localStorage.getItem('cpe_music_playing') === 'true' &&
+        document.documentElement.classList.contains('intro-done')) {
       audio.play().then(() => {
         btn.textContent = "🔊 BGM: ON";
-      }).catch(err => {
-        // Browser blocked autoplay, keep it muted/paused until user clicks
+      }).catch(() => {
         btn.textContent = "🔇 BGM: CLICK TO PLAY";
       });
     }
@@ -441,28 +480,295 @@
       localStorage.setItem('cpe_music_playing', 'false');
     }
   }
-</script>
 
-<!-- GLOBAL CLICK SOUND EFFECT -->
-<audio id="clickSound" preload="auto">
-  <source src="btn effect.mp3" type="audio/mp3">
-</audio>
-
-<script>
-  // Play sound effect on ANY click across the entire page (buttons, links, nav tabs, etc.)
-  document.addEventListener('click', function(event) {
-    const target = event.target.closest('a, button, .nes-btn, .nav-link');
-    
-    if (target) {
+  // Click sound on buttons, links and nav tabs
+  document.addEventListener('click', function (event) {
+    if (event.target.closest('a, button, .nes-btn, .nav-link')) {
       const clickAudio = document.getElementById('clickSound');
       if (clickAudio) {
-        clickAudio.currentTime = 0; // Rewind so rapid clicking works instantly
-        clickAudio.play().catch(err => {
-          // Handles browser autoplay blocks gracefully before first interaction
-        });
+        clickAudio.currentTime = 0;
+        clickAudio.play().catch(() => {});
       }
     }
   });
+</script>
+
+
+<!-- ========================= -->
+<!-- SUPER MARIO RUNNER GAME -->
+<!-- ========================= -->
+<script>
+(function () {
+  const overlay  = document.getElementById('intro-overlay');
+  const canvas   = document.getElementById('game');
+  const ctx      = canvas.getContext('2d');
+  const statusEl = document.getElementById('game-status');
+  const timeEl   = document.getElementById('game-time');
+  const barEl    = document.getElementById('game-progress');
+  const skipBtn  = document.getElementById('skipBtn');
+
+  // ---- Settings you can tweak ----
+  const WIN_TIME  = 5;     // seconds to survive
+  const GRAVITY   = 2200;  // higher = faster fall
+  const JUMP_V    = 720;   // higher = higher jump
+  const BASE_SPEED = 340;  // pixels per second
+  // --------------------------------
+
+  const W = canvas.width, H = canvas.height, GROUND = 170;
+  ctx.imageSmoothingEnabled = false;
+
+  // ---------- Pixel sprites ----------
+  const MARIO_PAL = { R:'#e52521', B:'#6b3a0a', S:'#fbb97c', U:'#1f4fd8', Y:'#f8d838' };
+  const MARIO_TOP = [
+    "....RRRRR...",
+    "...RRRRRRRRR",
+    "...BBBSSBS..",
+    "..BSBSSSBSSS",
+    "..BSBBSSSBSS",
+    "..BBSSSSBBBB",
+    "....SSSSSSS.",
+    "...RRURRR...",
+    "..RRRURURRR.",
+    "..RRRUUUURRR",
+    "..SSUYUUYUSS",
+    "..SSUUUUUUSS",
+    "...UUUUUUUU."
+  ];
+  const LEGS_A = ["..BBB...BBB.", "..BBBB..BBBB"];
+  const LEGS_B = ["...BBB.BBB..", "..BBBB..BBBB"];
+  const LEGS_JUMP = ["..BBBB.BBBB.", "..BBB....BBB"];
+
+  const GOOMBA_PAL = { N:'#a0522d', T:'#f5d6a0', K:'#111111', W:'#ffffff' };
+  const GOOMBA = [
+    "...NNNN...",
+    "..NNNNNN..",
+    ".NWWNNWWN.",
+    "NNKWNNWKNN",
+    "NNNNNNNNNN",
+    ".NNTTTTNN.",
+    "..TTTTTT..",
+    "..TTTTTT..",
+    ".KKK..KKK.",
+    "KKKK..KKKK"
+  ];
+
+  function drawSprite(rows, pal, x, y, s) {
+    for (let r = 0; r < rows.length; r++) {
+      for (let c = 0; c < rows[r].length; c++) {
+        const k = rows[r][c];
+        if (k !== '.') {
+          ctx.fillStyle = pal[k];
+          ctx.fillRect(Math.round(x + c * s), Math.round(y + r * s), s, s);
+        }
+      }
+    }
+  }
+
+  // ---------- Game state ----------
+  const S = 3;                       // sprite scale
+  const MARIO_W = 12 * S, MARIO_H = 15 * S;
+  const MARIO_X = 50;
+
+  let state = 'ready';               // ready | play | over | won
+  let t, mario, obstacles, sinceSpawn, nextGap, legTimer, scroll, clouds, lastTime, rafId;
+
+  function reset() {
+    t = 0;
+    mario = { y: 0, vy: 0 };
+    obstacles = [];
+    sinceSpawn = 0;
+    nextGap = 0;                     // first obstacle appears right away
+    legTimer = 0;
+    scroll = 0;
+    clouds = [{x:80,y:30},{x:300,y:55},{x:520,y:25}];
+    barEl.style.width = '0%';
+    timeEl.textContent = 'TIME 0.0 / ' + WIN_TIME.toFixed(1);
+  }
+
+  function setStatus(text) { statusEl.textContent = text; }
+
+  function jump() {
+    if (state === 'ready' || state === 'over') {
+      reset();
+      state = 'play';
+      setStatus('JUMP!');
+    }
+    if (state === 'play' && mario.y === 0) {
+      mario.vy = JUMP_V;
+    }
+  }
+
+  function spawn() {
+    if (Math.random() < 0.5) {
+      obstacles.push({ type: 'goomba', x: W + 10, w: 30, h: 30 });
+    } else {
+      obstacles.push({ type: 'pipe', x: W + 10, w: 44, h: Math.random() < 0.5 ? 46 : 60 });
+    }
+  }
+
+  function hit(o) {
+    const mx = MARIO_X + 8, mw = MARIO_W - 16;
+    const bottom = GROUND - mario.y, top = bottom - MARIO_H + 6;
+    const ox = o.x + 5, ow = o.w - 10, oTop = GROUND - o.h + 4;
+    return mx < ox + ow && mx + mw > ox && bottom > oTop && top < GROUND;
+  }
+
+  // ---------- Update ----------
+  function update(dt) {
+    scroll += 60 * dt;
+    clouds.forEach(c => { c.x -= 25 * dt; if (c.x < -60) c.x = W + 20; });
+
+    if (state !== 'play') return;
+
+    t += dt;
+    const speed = BASE_SPEED + t * 15;
+
+    // Mario physics
+    if (mario.y > 0 || mario.vy > 0) {
+      mario.vy -= GRAVITY * dt;
+      mario.y += mario.vy * dt;
+      if (mario.y <= 0) { mario.y = 0; mario.vy = 0; }
+    }
+    legTimer += dt;
+
+    // Obstacles
+    sinceSpawn += speed * dt;
+    if (sinceSpawn >= nextGap) {
+      spawn();
+      sinceSpawn = 0;
+      nextGap = 300 + Math.random() * 120;
+    }
+    obstacles.forEach(o => o.x -= speed * dt);
+    obstacles = obstacles.filter(o => o.x > -80);
+
+    // Collision
+    if (obstacles.some(hit)) {
+      state = 'over';
+      setStatus('💥 OUCH! SPACE TO RETRY');
+      return;
+    }
+
+    // Progress + win
+    const shown = Math.min(t, WIN_TIME);
+    timeEl.textContent = 'TIME ' + shown.toFixed(1) + ' / ' + WIN_TIME.toFixed(1);
+    barEl.style.width = (shown / WIN_TIME * 100) + '%';
+
+    if (t >= WIN_TIME) {
+      state = 'won';
+      barEl.style.width = '100%';
+      setStatus('🏆 LEVEL CLEAR!');
+      setTimeout(dismissIntro, 1500);
+    }
+  }
+
+  // ---------- Draw ----------
+  function drawCloud(x, y) {
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(x + 8, y, 32, 8);
+    ctx.fillRect(x, y + 8, 48, 8);
+    ctx.fillRect(x + 8, y + 16, 32, 4);
+  }
+
+  function drawPipe(o) {
+    const top = GROUND - o.h;
+    ctx.fillStyle = '#004d00'; ctx.fillRect(o.x, top, o.w, o.h);
+    ctx.fillStyle = '#00a800'; ctx.fillRect(o.x + 3, top + 16, o.w - 6, o.h - 16);
+    ctx.fillStyle = '#7cfc00'; ctx.fillRect(o.x + 7, top + 16, 5, o.h - 16);
+    ctx.fillStyle = '#004d00'; ctx.fillRect(o.x - 3, top, o.w + 6, 18);
+    ctx.fillStyle = '#00a800'; ctx.fillRect(o.x, top + 3, o.w, 12);
+    ctx.fillStyle = '#7cfc00'; ctx.fillRect(o.x + 4, top + 3, 5, 12);
+  }
+
+  function draw() {
+    // sky
+    ctx.fillStyle = '#5c94fc';
+    ctx.fillRect(0, 0, W, H);
+    clouds.forEach(c => drawCloud(c.x, c.y));
+
+    // ground bricks
+    ctx.fillStyle = '#c84c0c';
+    ctx.fillRect(0, GROUND, W, H - GROUND);
+    ctx.fillStyle = '#000';
+    const off = Math.round(scroll) % 32;
+    for (let x = -off; x < W; x += 32) {
+      ctx.fillRect(x, GROUND, 2, H - GROUND);
+      ctx.fillRect(x + 16, GROUND + 15, 2, 15);
+    }
+    ctx.fillRect(0, GROUND, W, 2);
+    ctx.fillRect(0, GROUND + 15, W, 2);
+
+    // obstacles
+    obstacles.forEach(o => {
+      if (o.type === 'pipe') drawPipe(o);
+      else drawSprite(GOOMBA, GOOMBA_PAL, o.x, GROUND - 30, 3);
+    });
+
+    // Mario
+    const my = GROUND - mario.y - MARIO_H;
+    let legs;
+    if (mario.y > 0) legs = LEGS_JUMP;
+    else if (state === 'play') legs = (Math.floor(legTimer / 0.1) % 2) ? LEGS_A : LEGS_B;
+    else legs = LEGS_A;
+    drawSprite(MARIO_TOP.concat(legs), MARIO_PAL, MARIO_X, my, S);
+
+    // overlay text on game over
+    if (state === 'over' || state === 'ready') {
+      ctx.fillStyle = 'rgba(0,0,0,0.45)';
+      ctx.fillRect(0, 0, W, GROUND);
+      ctx.fillStyle = '#fff';
+      ctx.font = '16px "Press Start 2P", monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText(state === 'over' ? 'GAME OVER' : 'READY?', W / 2, 90);
+      ctx.font = '10px "Press Start 2P", monospace';
+      ctx.fillText('PRESS SPACE', W / 2, 120);
+    }
+  }
+
+  // ---------- Loop ----------
+  function frame(now) {
+    const dt = Math.min((now - lastTime) / 1000, 0.05);
+    lastTime = now;
+    update(dt);
+    draw();
+    rafId = requestAnimationFrame(frame);
+  }
+
+  // ---------- Controls ----------
+  function onKey(e) {
+    if (e.code === 'Space' || e.code === 'ArrowUp') {
+      e.preventDefault();
+      jump();
+    }
+  }
+
+  function dismissIntro() {
+    cancelAnimationFrame(rafId);
+    document.removeEventListener('keydown', onKey);
+    overlay.classList.add('hidden');
+    document.body.classList.remove('intro-active');
+    try { sessionStorage.setItem('cpe_intro_done', 'true'); } catch (e) {}
+
+    // Start the background music (allowed because the player interacted)
+    if (audio.paused) {
+      audio.play().then(() => {
+        btn.textContent = '🔊 BGM: ON';
+        localStorage.setItem('cpe_music_playing', 'true');
+      }).catch(() => {});
+    }
+    setTimeout(() => { overlay.style.display = 'none'; }, 700);
+  }
+
+  // ---------- Start ----------
+  if (!document.documentElement.classList.contains('intro-done')) {
+    document.body.classList.add('intro-active');
+    reset();
+    document.addEventListener('keydown', onKey);
+    canvas.addEventListener('pointerdown', function (e) { e.preventDefault(); jump(); });
+    skipBtn.addEventListener('click', dismissIntro);
+    lastTime = performance.now();
+    rafId = requestAnimationFrame(frame);
+  }
+})();
 </script>
 
 </body>

@@ -13,6 +13,9 @@
   <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
+  <!-- Light Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     /* Global Styles */
     body {
@@ -26,7 +29,6 @@
       image-rendering: pixelated;
     }
 
-    /* Navigation */
     /* Retro Navigation Links Styling */
     .custom-tab {
       font-family: 'Press Start 2P', cursive;
@@ -143,18 +145,27 @@
       line-height: 1.5;
     }
 
+    /* Body text in Comic Neue */
     .content-text {
-      font-size: 0.7rem;
-      line-height: 1.8;
+      font-family: 'Comic Neue', 'Comic Sans MS', cursive !important;
+      font-size: 1.25rem;
+      line-height: 1.7;
+      letter-spacing: 0.3px;
       color: #000000;
     }
 
     .pixel-tools {
-      font-size: 0.65rem;
-      line-height: 1.8;
-      letter-spacing: 0.5px;
-      word-spacing: 2px;
+      font-family: 'Comic Neue', 'Comic Sans MS', cursive !important;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      letter-spacing: 0.3px;
       color: #000000;
+    }
+
+    /* Smaller text inside cards, role boxes and popups */
+    .card .content-text,
+    .nes-container .content-text {
+      font-size: 1.1rem !important;
     }
 
     .small-pixel {
@@ -227,8 +238,8 @@
 <body>
 
 <div class="container py-4">
- <!-- NAVIGATION -->
-<!-- Navigation Bar -->
+
+  <!-- NAVIGATION -->
   <nav class="navbar navbar-expand-md biome-castle-container p-3 mb-4" style="border: 3px solid #f39c12 !important;">
     <div class="container-fluid">
       <a class="navbar-brand pixel-gold text-decoration-none" href="index.html" style="font-size: 0.75rem;">
@@ -250,10 +261,10 @@
             <a class="nav-link custom-tab" href="about.html">ABOUT</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link custom-tab" href="careers.html">CAREER & FIELDS</a>
+            <a class="nav-link custom-tab active" aria-current="page" href="careers.html">CAREER & FIELDS</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link custom-tab active" aria-current="page" href="faculty.html">FACULTY</a>
+            <a class="nav-link custom-tab" href="faculty.html">FACULTY</a>
           </li>
         </ul>
       </div>
