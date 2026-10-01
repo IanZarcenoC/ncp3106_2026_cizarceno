@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 * { 
  box-sizing: border-box; 
  margin: 0; 
@@ -130,3 +131,357 @@
  overflow-y: visible; 
  } 
  }
+=======
+/* MARIO COLOR PALETTE */
+
+:root {
+  --mario-red: #e52521;
+  --mario-red-dark: #b8201d;
+  --mario-blue: #049cd8;
+  --mario-blue-dark: #027cae;
+  --mario-yellow: #fbd000;
+  --mario-brown: #d67f43;
+  --mario-brown-dark: #a85a2a;
+  --mario-green: #43b047;
+  --mario-green-dark: #2e7d32;
+  --sky-blue: #5c94fc;
+  --brick-dark: #1a1a1a;
+  --cream: #fceabb;
+}
+
+body {
+  background-color: var(--sky-blue);
+  background-image:
+    linear-gradient(180deg, var(--sky-blue) 0%, var(--sky-blue) 70%, #7ec850 70%, #7ec850 100%);
+  background-attachment: fixed;
+  font-family: 'Press Start 2P', cursive;
+  color: var(--brick-dark);
+}
+
+/* BANNER - topleft */
+
+.site-banner {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+}
+
+.banner-img {
+  width: 150px;
+  max-height: 150px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  border: 4px solid var(--brick-dark);
+  border-radius: 8px;
+  background: var(--cream);
+}
+
+
+/* TEXT ELEMENTS                 */
+
+.pixel-red,
+.hero-subtitle {
+  color: var(--mario-red);
+  text-shadow: 2px 2px 0 var(--brick-dark);
+}
+
+.main-title {
+  color: var(--mario-yellow);
+  -webkit-text-stroke: 2px var(--brick-dark);
+  text-shadow: 4px 4px 0 var(--mario-red);
+  font-size: 3rem;
+}
+
+.hero-description {
+  color: #fff;
+  text-shadow: 2px 2px 0 var(--mario-blue-dark);
+}
+
+.section-title {
+  color: var(--mario-red);
+  background: var(--cream);
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border: 3px solid var(--brick-dark);
+  border-radius: 6px;
+}
+
+.content-text {
+  color: var(--brick-dark);
+  line-height: 1.8;
+}
+
+.small-pixel {
+  color: var(--mario-blue-dark);
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.footer-text {
+  color: #fff;
+  text-shadow: 2px 2px 0 var(--brick-dark);
+}
+
+.intro-text {
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive !important;
+  font-weight: 400;
+  font-size: 2.0rem;
+  line-height: 1.7;
+  letter-spacing: 0.3px;
+}
+
+/* CONTAINERS */
+
+.nes-container {
+  background-color: var(--cream) !important;
+  border-color: var(--brick-dark) !important;
+}
+
+.glow-red {
+  box-shadow: 0 0 20px var(--mario-red);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  filter: drop-shadow(2px 2px 0 var(--brick-dark));
+}
+
+.feature-title {
+  color: var(--mario-blue-dark);
+}
+
+.hero-gadget {
+  font-size: 2.5rem;
+}
+
+
+/* NAV TABS  */
+
+.nav-tabs {
+  border-bottom: 4px solid var(--mario-green-dark);
+}
+
+.nav-tabs .nav-link {
+  color: var(--mario-blue-dark);
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.7rem;
+  border: none;
+  padding: 0.75rem 1rem;
+}
+
+.nav-tabs .nav-link:hover {
+  color: var(--mario-red);
+}
+
+.nav-tabs .nav-link.active {
+  background-color: var(--mario-green);
+  color: #fff !important;
+  border-radius: 6px 6px 0 0;
+  border: 3px solid var(--brick-dark);
+  border-bottom: none;
+}
+
+.diagram-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.7rem;
+  line-height: 2;
+}
+
+.diagram-list li::before {
+  content: "▸ ";
+}
+
+.diagram-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.diagram-arrows {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+
+
+
+
+
+/* BUTTONS */
+
+.nes-btn.is-error {
+  background-color: var(--mario-red) !important;
+  border-color: var(--brick-dark) !important;
+  color: #fff !important;
+}
+
+.nes-btn.is-error:hover {
+  background-color: var(--mario-red-dark) !important;
+}
+
+.nes-btn:not(.is-error) {
+  background-color: var(--mario-yellow) !important;
+  border-color: var(--brick-dark) !important;
+  color: var(--brick-dark) !important;
+}
+
+.nes-btn:not(.is-error):hover {
+  background-color: #e0b800 !important;
+}
+
+.card.nes-rounded {
+  background-color: var(--cream);
+  border: 4px solid var(--brick-dark);
+  border-radius: 8px;
+  image-rendering: pixelated;
+}
+
+/* FEATURE CARDS - "Power-Up"    */
+.card.nes-rounded {
+  background-color: var(--cream);
+  border: 4px solid var(--brick-dark);
+  border-radius: 8px;
+  image-rendering: pixelated;
+  box-shadow: 6px 6px 0 var(--brick-dark);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.card.nes-rounded::before {
+  content: "";
+  display: block;
+  height: 10px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--mario-yellow) 0 10px,
+    var(--mario-brown) 10px 20px
+  );
+}
+
+.card.nes-rounded:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 10px 10px 0 var(--brick-dark);
+}
+
+.card.nes-rounded .card-body {
+  padding: 1.75rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* coint inside */
+.card.nes-rounded .feature-icon {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--mario-yellow);
+  border: 3px solid var(--brick-dark);
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  box-shadow: 3px 3px 0 var(--brick-dark);
+}
+
+.card.nes-rounded .card-title {
+  color: var(--mario-blue-dark);
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.card.nes-rounded .card-text {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 0.85rem;
+  color: var(--brick-dark);
+  text-align: center;
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+}
+
+.card.nes-rounded .nes-btn {
+  margin-top: auto;
+  width: 100%;
+}
+
+.col-md-4:nth-child(1) .card.nes-rounded::before {
+  background: repeating-linear-gradient(90deg, var(--mario-red) 0 10px, var(--mario-red-dark) 10px 20px);
+}
+
+.col-md-4:nth-child(2) .card.nes-rounded::before {
+  background: repeating-linear-gradient(90deg, var(--mario-green) 0 10px, var(--mario-green-dark) 10px 20px);
+}
+
+.col-md-4:nth-child(3) .card.nes-rounded::before {
+  background: repeating-linear-gradient(90deg, var(--mario-blue) 0 10px, var(--mario-blue-dark) 10px 20px);
+}
+
+.diagram-title {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+/* Retro Navigation Links Styling */
+    .custom-tab {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.6rem !important;
+      color: #2c3e50 !important;
+      background-color: #f7dc6f !important;
+      border: 3px solid #1a252f !important;
+      border-radius: 0 !important;
+      padding: 8px 12px !important;
+      box-shadow: 2px 2px 0px #000;
+      text-align: center;
+      display: block;
+    }
+
+    .custom-tab.active {
+      color: #ffffff !important;
+      background-color: #c0392b !important;
+      border-color: #f39c12 !important;
+    }
+
+    .custom-tab:hover:not(.active) {
+      background-color: #f4d03f !important;
+      color: #000 !important;
+    }
+
+   /* Intro Overlay & Mini-Game Styles */
+.intro-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.intro-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Mario Jump Class */
+.jump {
+  animation: marioJump 0.5s cubic-bezier(0,0,0.2,1);
+}
+
+@keyframes marioJump {
+  0% { bottom: 0px; }
+  50% { bottom: 70px; }
+  100% { bottom: 0px; }
+}
+>>>>>>> CPEWebsite
